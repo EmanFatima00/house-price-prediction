@@ -83,7 +83,10 @@ with tab1:
         city         = st.selectbox("City", meta['cities'])
         property_type= st.selectbox("Property Type", meta['property_types'])
         purpose      = st.selectbox("Purpose", ["For Sale", "For Rent"])
-        area_size    = st.number_input("Area Size (Marla)", min_value=1.0, max_value=500.0, value=10.0, step=0.5)
+        area_unit = st.selectbox("Area Unit", ["Marla", "Kanal"])
+        area_input = st.number_input(f"Area Size ({area_unit})", min_value=0.5, max_value=500.0, value=10.0, step=0.5)
+        area_size = area_input * 20 if area_unit == "Kanal" else area_input
+        st.caption(f"= {area_size:.1f} Marla" if area_unit == "Kanal" else "")
         bedrooms     = st.slider("Bedrooms", 0, 10, 3)
         baths        = st.slider("Bathrooms", 0, 10, 2)
         house_age    = st.slider("Estimated House Age (years)", 0, 50, 5)
@@ -144,7 +147,8 @@ with tab1:
 
             st.markdown("#### Property Summary")
             st.markdown(f"- **City:** {city} | **Type:** {property_type}")
-            st.markdown(f"- **Area:** {area_size} Marla | **Beds:** {bedrooms} | **Baths:** {baths}")
+            display_area = f"{area_input} {area_unit} ({area_size:.1f} Marla)" if area_unit == "Kanal" else f"{area_size} Marla"
+            st.markdown(f"- **Area:** {display_area} | **Beds:** {bedrooms} | **Baths:** {baths}")
             st.markdown(f"- **House Age:** {house_age} years | **Purpose:** {purpose}")
         else:
             st.markdown("""
