@@ -1,0 +1,1 @@
+{"best_model": "XGBoost", "r2": 0.8785, "mae": 2496729.0, "mape": 44.57, "rmse": 4830502.0, "total_listings": 50000, "cities": ["Faisalabad", "Islamabad", "Karachi", "Lahore", "Rawalpindi"], "property_types": ["Farm House", "Flat", "House", "Lower Portion", "Penthouse", "Room", "Upper Portion"], "provinces": ["Islamabad Capital", "Punjab", "Sindh"], "use_scaler": false}
